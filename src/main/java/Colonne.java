@@ -13,6 +13,12 @@ public class Colonne {
 		this.colonneType = null;
 		this.cellules = null;
 	}
+	public Colonne(String colonneTitre, Type colonneType){
+		this.colonneTitre = colonneTitre;
+		this.colonneType = colonneType;
+		this.cellules = cellules;
+	}
+
 
 	public Colonne(String colonneTitre, Type colonneType, ArrayList<Cellule> cellules){
 		this.colonneTitre = colonneTitre;
