@@ -73,7 +73,7 @@ public class DataFrame {
 		System.out.print( "\n" );
 		System.out.print( "----------------------------------------------------------------------\n" );
 }
-         public void afficherLabels( String... arg ) throws Exception
+         public void afficherTitres( String... arg ) throws Exception
 	{
 		System.out.println("DataFrame : "+this.getTitre());
 		System.out.print("Ligne\t\t");
@@ -89,6 +89,19 @@ public class DataFrame {
 		System.out.print( "\n" );
 		System.out.print( "----------------------------------------------------------------------\n" );
 }
+	public void afficherDataframe(){
+        afficherTitres();
+        // Affichage des données
+        for (int numLigne = 0; numLigne < this.getNbLignes(); numLigne++){
+            // Affichage des lignes
+            System.out.print(numLigne+"\t\t");
+            for( Colonne c : this.getColonnes() )
+            {
+                afficher( c.getCellules().get( numLigne ).getValue() + "", 5 );
+                afficherTab();
+            }
+            System.out.println();
+        }
 
 	
 }
