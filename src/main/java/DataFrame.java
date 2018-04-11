@@ -119,6 +119,52 @@ public class DataFrame {
 	{	
 		return this.getColonnes().size();
 }
+	public DataFrame selectLignes( int start, int end ) throws IndiceDataFrameIncorrectException, IndiceDebutTropGrandException
+	{
+		DataFrame df = new DataFrame();
+		if( start < 0 || end > this.getSize() )
+			throw new IndiceDataFrameIncorrectException();
+		else if( start > end )
+			throw new IndiceDebutTropGrandException();
+		else
+		{
+			df.setTtitre( this.getTitre() + " - lignes " + start + ", " + end );
+			// Ajouter les colonnes au data frame avec les mêmes labels
+			for( Colonne c : this.getColonnes() )
+			{
+				Colonne t = new Colonne( c.getColonneTitre(), c.getColonneType() );
+				for( int i = start; i <= end; i++ )
+				{
+					t.getCellules().add( c.getCellules().get( i ) );
+				}
+				df.getColonnes().add( t );
+			}
+		}
+		return df;
+		
+}
+         public DataFrame selectColonnes( int start, int end ) throws IndiceDataFrameIncorrectException, IndiceDebutTropGrandException
+	{
+		DataFrame df = new DataFrame();
+		if( start < 0 || end > this.getSize() )
+			throw new IndiceDataFrameIncorrectException();
+		else if( start > end )
+			throw new IndiceDebutTropGrandException();
+		else 
+		{
+			df.setTtitre( this.getTitre() + " - colonnes " + start + ", " + end );
+			for( int i = start; i <= end; i++ )
+			{
+				Colonne c = this.getColonnes().get( i );
+				df.getColonnes().add( c );
+			}
+		}
+		return df;
+}
+
+
+	
+}
 
 	
 }
