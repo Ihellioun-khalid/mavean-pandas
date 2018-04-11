@@ -39,6 +39,56 @@ public class DataFrame {
 	 public int getNbLignes() {
 			return getColonnes().get(0).getCellules().size();		
 	}
+	public void afficherTab()
+	{
+		System.out.print( "\t\t" );
+}
+         public void afficher(String msg, int limit){
+		System.out.print(msg.substring(0, Math.min(limit, msg.length())));
+		if (msg.length() > limit){
+			System.out.print("..");
+		}
+}
+         public void afficherTitres()
+	{
+		System.out.println("DataFrame : "+this.getTitre());
+		System.out.print("Ligne\t\t");
+		for( Colonne c : this.getColonnes() )
+		{
+			afficher( c.getColonneTitre() + "", 5 );
+			afficherTab();
+		}
+		System.out.print( "\n" );
+		System.out.print( "-----------------------------------------------------------------------------\n" );
+}
+         public void afficherTitres(int start, int end )
+	{
+		System.out.println("DataFrame : "+this.getTitre());
+		System.out.print("Ligne\t\t");
+		for( int i = start; i < end; i++  )
+		{
+			afficher( this.getColonnes().get( i ).getColonneTitre() + "", 5 );
+			afficherTab();
+		}
+		System.out.print( "\n" );
+		System.out.print( "----------------------------------------------------------------------\n" );
+}
+         public void afficherLabels( String... arg ) throws Exception
+	{
+		System.out.println("DataFrame : "+this.getTitre());
+		System.out.print("Ligne\t\t");
+		for( String c : arg )
+		{
+			Colonne col = this.getColonne( c );
+			if( col != null )
+			{
+				afficher( col.getColonneTitre() + "", 5 );
+				afficherTab();
+			}
+		}
+		System.out.print( "\n" );
+		System.out.print( "----------------------------------------------------------------------\n" );
+}
 
 	
 }
