@@ -102,6 +102,23 @@ public class DataFrame {
             }
             System.out.println();
         }
+		
+       public int getSize()
+	{
+		int size = -1;
+		
+		for( Colonne c : this.getColonnes() )
+		{
+			if( c.getCellules().size() > size )
+				size = c.getCellules().size();
+		}
+		
+		return size;
+}
+         public int getSizeColonnes()
+	{	
+		return this.getColonnes().size();
+}
 
 	
 }
