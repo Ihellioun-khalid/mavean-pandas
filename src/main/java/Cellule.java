@@ -1,3 +1,6 @@
+import Exceptions.CelluleNonComparableException;
+import Exceptions.colonnePasTrouveException;
+
 public class Cellule<E> {
 	
 	private E data;
@@ -5,9 +8,13 @@ public class Cellule<E> {
 	public Cellule(){
 		this.data=null;
 	}
-	
+
 	public Cellule(E data){
 		this.data = data;
+	}
+
+	public Cellule(Cellule c){
+		this.data = (E) c.data;
 	}
 
 	public E getData() {
@@ -17,9 +24,10 @@ public class Cellule<E> {
 	public void setData(E data) {
 		this.data = data;
 	}
-	
-	public boolean equals(Object obj){
-		if (obj == null || getClass() != obj.getClass()){
+
+	public boolean compareCellule(Object obj) throws Exception{
+		if(this.data==null) throw new CelluleNonComparableException();
+		if (obj==null || getClass() != obj.getClass()){
 			return false;
 		}
 		Cellule cellule2 = (Cellule)obj;
@@ -28,21 +36,21 @@ public class Cellule<E> {
 		}
 		return false;
 	}
-	
-	public int CelluleSize() {	
+
+	public int CelluleSize() throws Exception{	
 		if(this.getData()==null) 
-			return -1;
+			throw new CelluleVideException();
 		else {
 			return this.data.toString().length();
 		}
 	}
-	
-	public void afficheCellule() {
+
+	public void afficheCellule() throws Exception{
 		if(this.getData()==null)
-			System.out.println("la cellule ne contient aucune data !!");
+			throw new CelluleVideException();
 		else{
 			System.out.println(this.getData());
 		}
 	}
-	
+
 }
