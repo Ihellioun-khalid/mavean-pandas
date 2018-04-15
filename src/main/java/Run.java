@@ -7,10 +7,9 @@ public class Run {
 		try {
 			
 			//Cellule test
-				Cellule a = new Cellule<>("ee");
-				Cellule b = new Cellule<>("1");
-				b.afficheCellule();
-//				Cellule c = new Cellule<>("ee");
+				Cellule a = new Cellule<>("a");
+				Cellule b = new Cellule<>(22.2);
+				Cellule c = new Cellule<>("cccc");
 //				a.afficheCellule();
 //				System.out.println(a.CelluleSize());
 //				System.out.println(b.CelluleSize());
@@ -21,27 +20,31 @@ public class Run {
 				ArrayList <Cellule> cellules_b = new ArrayList<>();
 				ArrayList <Cellule> cellules_c = new ArrayList<>();
 				ArrayList <Cellule> cellules_e = new ArrayList<>();
-				cellules_a.add(a);
-				cellules_a.add(a);
-				cellules_a.add(a);
-				cellules_a.add(a);
+				cellules_a.add(a);cellules_b.add(b);cellules_c.add(c);
+				cellules_a.add(a);cellules_b.add(b);cellules_c.add(c);
+				cellules_a.add(a);cellules_b.add(b);cellules_c.add(c);
 				
 				Colonne aa =new Colonne();
 				Colonne cc =new Colonne("Pays", Type.getType("SHORT"), cellules_c);
-				Colonne dd =new Colonne("Pays", Type.getType("INTEGER"), cellules_b);
-				Colonne ee =new Colonne("Pays", Type.getType("STRING"), cellules_a);
-				//aa.addDebutCellule(b);
-//				aa.afficheColonne();
+				Colonne dd =new Colonne("Passager", Type.getType("FLOAT"), cellules_b);
+				Colonne ee =new Colonne("Lovers", Type.getType("SHORT"), cellules_a);
+				ee=ee.addDebutCellule(b);
+				ee.afficheColonne();
+//				ee.addDebutCellule(c);
+//				dd.addDebutCellule(a);
 //				cc.afficheColonne();
 //				dd.afficheColonne();
+		//		aa.afficheColonne();
+				
 //				System.out.println(cc.compareColonne(dd));
 //				System.out.println(aa.compareColonne(aa));	
 //				System.out.println(cc.compareColonne(dd));
-				System.out.println(aa.getSizeColonne());
-				System.out.println(cc.getSizeColonne());
-				System.out.println(dd.getSizeColonne());
-				System.out.println(ee.getSizeColonne());
-				//ee.afficheColonne();
+//				System.out.println(aa.getSizeColonne());
+//				System.out.println(cc.getSizeColonne());
+//				System.out.println(dd.getSizeColonne());
+//				System.out.println(ee.getSizeColonne());
+				
+				
 				//addCellule()
 				//suppCellule()
 				//modifieCellule()

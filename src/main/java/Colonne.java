@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import com.sun.org.apache.bcel.internal.generic.Type;
 
 import Exceptions.CelluleNonComparableException;
+import Exceptions.ColonneNonComparableException;
 import Exceptions.ColonnePasCelluleException;
 import Exceptions.ColonnePasTitreException;
 import Exceptions.ColonnePasTypeException;
@@ -123,21 +124,32 @@ public class Colonne {
 		return this.getCellules().size();
 	}
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	public void addDebutCellule(Cellule a){
-		if(a.getData().getClass()!=this.getcolonneTyp().ge)
-//		Colonne resultat = new Colonne();
-//		ArrayList <Cellule> cellules = null;
-//		cellules.add(a);
-//		for (Cellule c : cellules) {
-//			cellules.add(c);
-//		}
-//		for (Cellule c : cellules) {
-//			System.out.println(c.getData());
-//		}
-//		resultat.colonneTitre=this.colonneTitre;
-//		resultat.colonneType=this.colonneType;
-//		resultat.cellules=cellules;
-
+	public void test1(Cellule a) {
+		if(a.getData().getClass().getSimpleName()!=this.getColonneType().toString() && (this.getColonneType().toString()!="short" &&
+				a.getData().getClass().getSimpleName()=="String")) {
+				System.out.println(a.getData().getClass().getSimpleName());
+				System.out.println(this.getColonneType());
+			}else {
+				
+			}
+	}
+	
+	public Colonne addDebutCellule(Cellule a) throws Exception{ 
+		if((a.getData().getClass().getSimpleName()==this.getColonneType().toString()) || (this.getColonneType().toString()=="short" && a.getData().getClass().getSimpleName().trim().toString().equals("String"))) {
+				System.out.println("2222222222222");
+				Colonne resultat = new Colonne();
+				ArrayList <Cellule> cellules=new ArrayList <Cellule>();
+				cellules.add(a);
+				for (Cellule c : this.cellules) {
+					cellules.add(c);
+				}
+				resultat.colonneTitre=this.colonneTitre;
+				resultat.colonneType=this.colonneType;
+				resultat.cellules=cellules;
+				return resultat;
+			}else {
+				throw new IncoherenceTypeException();
+			}
 	}
 //	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //	public Colonne addFinCellule(Cellule a){

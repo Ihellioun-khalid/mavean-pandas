@@ -70,8 +70,6 @@ public class DataFrame {
 			System.out.print("..");
 		}
     }
-    
-
 }
 
 

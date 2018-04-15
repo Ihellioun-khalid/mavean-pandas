@@ -1,3 +1,4 @@
+package Exceptions;
 
 public class ColonneNonComparableException extends Exception {
 	public ColonneNonComparableException(){
