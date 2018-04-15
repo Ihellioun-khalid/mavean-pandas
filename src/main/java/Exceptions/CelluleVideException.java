@@ -1,3 +1,4 @@
+package Exceptions;
 
 public class CelluleVideException extends Exception {
 	public CelluleVideException(){

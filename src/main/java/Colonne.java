@@ -8,6 +8,7 @@ import Exceptions.ColonnePasCelluleException;
 import Exceptions.ColonnePasTitreException;
 import Exceptions.ColonnePasTypeException;
 import Exceptions.ColonneVideException;
+import Exceptions.IncoherenceTypeException;
 
 public class Colonne {
 	
@@ -123,17 +124,7 @@ public class Colonne {
 		}
 		return this.getCellules().size();
 	}
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	public void test1(Cellule a) {
-		if(a.getData().getClass().getSimpleName()!=this.getColonneType().toString() && (this.getColonneType().toString()!="short" &&
-				a.getData().getClass().getSimpleName()=="String")) {
-				System.out.println(a.getData().getClass().getSimpleName());
-				System.out.println(this.getColonneType());
-			}else {
-				
-			}
-	}
-	
+
 	public Colonne addDebutCellule(Cellule a) throws Exception{ 
 		if((a.getData().getClass().getSimpleName()==this.getColonneType().toString()) || (this.getColonneType().toString()=="short" && a.getData().getClass().getSimpleName().trim().toString().equals("String"))) {
 				Colonne resultat = new Colonne();
@@ -168,27 +159,49 @@ public class Colonne {
 		}
 	}
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	public Colonne addCellule(Cellule a,int i){
-		return null;
+	public Colonne addCellule(Cellule a,int i)throws Exception{
+		if((a.getData().getClass().getSimpleName()==this.getColonneType().toString()) || 
+			(this.getColonneType().toString()=="short" && a.getData().getClass().getSimpleName().trim().toString().equals("String"))){
+			if(i>=this.cellules.size()+1) new Indexofbound();
+			Colonne resultat = new Colonne();
+			resultat.cellules=this.cellules;
+			cellules.add(i,a);
+				resultat.colonneTitre=this.colonneTitre;
+				resultat.colonneType=this.colonneType;
+				resultat.cellules=cellules;
+				return resultat;
+			
+		}else {
+			throw new IncoherenceTypeException();
+		}
+	}
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	public Colonne supprimeCellule(String Titre)throws Exception{
+		if(this.cellules==null) throw new ColonneVideException();
+		else {
+			this.cellules=cellules;
+			for (Cellule c : this.cellules) {
+				
+				//cellules.delete(c);
+				
+			}
+			return null;
+		}	
+		
 	}
 //	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//	public Colonne supprimeCellule(String Titre){
-//		return null;
-//	}
-//	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //	public Colonne supprimeCellule(int i){
+//		if(this.cellules==null) throw new ColonneVideException();
 //		return null;
 //	}
 //	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //	public Colonne supprimeCellule(Cellule a){
-//		return null;
-//	}
-//	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//	public Colonne supprimeCellule(Type colonneType){
+//	if(this.cellules==null) throw new ColonneVideException();
 //		return null;
 //	}
 //	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //	public Colonne supprimeCellule(ArrayList<Cellule> cellules){
+//		if(this.cellules==null) throw new ColonneVideException();
 //		return null;
 //	}
 //	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

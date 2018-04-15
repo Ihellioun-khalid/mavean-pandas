@@ -1,4 +1,5 @@
 import Exceptions.CelluleNonComparableException;
+import Exceptions.CelluleVideException;
 import Exceptions.colonnePasTrouveException;
 
 public class Cellule<E> {

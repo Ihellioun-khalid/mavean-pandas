@@ -1,3 +1,4 @@
+package Exceptions;
 
 public class IncoherenceTypeException extends Exception {
 	public IncoherenceTypeException() {
