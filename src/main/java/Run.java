@@ -28,7 +28,7 @@ public class Run {
 				Colonne cc =new Colonne("Pays", Type.getType("SHORT"), cellules_c);
 				Colonne dd =new Colonne("Passager", Type.getType("FLOAT"), cellules_b);
 				Colonne ee =new Colonne("Lovers", Type.getType("SHORT"), cellules_a);
-				ee=ee.addDebutCellule(b);
+				ee=ee.addFinCellule(c);
 				ee.afficheColonne();
 //				ee.addDebutCellule(c);
 //				dd.addDebutCellule(a);

@@ -136,7 +136,6 @@ public class Colonne {
 	
 	public Colonne addDebutCellule(Cellule a) throws Exception{ 
 		if((a.getData().getClass().getSimpleName()==this.getColonneType().toString()) || (this.getColonneType().toString()=="short" && a.getData().getClass().getSimpleName().trim().toString().equals("String"))) {
-				System.out.println("2222222222222");
 				Colonne resultat = new Colonne();
 				ArrayList <Cellule> cellules=new ArrayList <Cellule>();
 				cellules.add(a);
@@ -151,14 +150,27 @@ public class Colonne {
 				throw new IncoherenceTypeException();
 			}
 	}
-//	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//	public Colonne addFinCellule(Cellule a){
-//		return null;
-//	}
-//	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//	public Colonne addCellule(Cellule a,int i){
-//		return null;
-//	}
+
+	public Colonne addFinCellule(Cellule a)throws Exception{
+		if((a.getData().getClass().getSimpleName()==this.getColonneType().toString()) || (this.getColonneType().toString()=="short" && a.getData().getClass().getSimpleName().trim().toString().equals("String"))) {
+			Colonne resultat = new Colonne();
+			ArrayList <Cellule> cellules=new ArrayList <Cellule>();
+			for (Cellule c : this.cellules) {
+				cellules.add(c);
+			}
+			cellules.add(a);
+			resultat.colonneTitre=this.colonneTitre;
+			resultat.colonneType=this.colonneType;
+			resultat.cellules=cellules;
+			return resultat;
+		}else {
+			throw new IncoherenceTypeException();
+		}
+	}
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	public Colonne addCellule(Cellule a,int i){
+		return null;
+	}
 //	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //	public Colonne supprimeCellule(String Titre){
 //		return null;
