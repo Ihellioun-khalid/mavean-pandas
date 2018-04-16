@@ -8,41 +8,88 @@ import Exceptions.IndiceGrandException;
 import Exceptions.IndiceIncorrectException;
 import Exceptions.NonCalculableException;
 import Exceptions.colonnePasTrouveException;
-
+/**
+ * Dataframe est un outil de gestion de données comme le Dataframe en Python
+ * @author IHELLIOUN Khalid, SARRAJ Ahhmed, ABDULLAH HASIM Mohd Thaqif
+ * @version 1.0
+ *
+ */
 public class DataFrame {
 	///////////////////////////////////////////////////////////////////
+	/**
+	 * Le titre pour le Dataframe
+	 */
 	private String titre;
+	
+	/**
+	 * Le constructeur qui initialise un Dataframe avec une liste de colonnes vide
+	 */
 	public DataFrame()
 	{
 		this.setColonnes( new ArrayList<Colonne>() );
 	}
 	
+	/**
+	 * Récuperer le titre du Dataframe
+	 * @return titre Le titre
+	 */
 	public String getTitre() {
 		return titre;
 	}	
 	
+	/**
+	 * Donner un titre au Dataframe
+	 * @param titre Le titre
+	 */
 	public void setTtitre(String titre) {
 		this.titre = titre;
 	}
 	////////////////////////////////////////////////////////////////////
+	/**
+	 * Une liste de colonnes stockés
+	 */
 	private ArrayList<Colonne> colonnes;
 	
+	/**
+	 * Récuperer une liste de colonnes
+	 * @return Une liste de colonnes
+	 */
 	public ArrayList<Colonne> getColonnes() {
 		return colonnes;
 	}
 
+	/**
+	 * Ajouter une liste de colonnes
+	 * @param colonnes La liste de colonnes à ajouter
+	 */
 	public void setColonnes(ArrayList<Colonne> colonnes) {
 		this.colonnes = colonnes;
 	}
 
+	/**
+	 * Le constructeur de Dataframe
+	 * @param titre Le titre de Dataframe
+	 * @param colonnes Une liste de colonnes à ajouter
+	 */
 	public DataFrame(String titre, ArrayList<Colonne> colonnes){
 		this.titre = titre;
 		this.colonnes = colonnes;
 	}
 
+	/**
+	 * Récupere le nombre de ligne/index du Dataframe
+	 * @return Le nombre de ligne/index du Dataframe
+	 */
 	 public int getLigneNumber() {
 			return getColonnes().get(0).getUnits().size();		
 	}
+	 
+	 /**
+	  * Récuperer un Colonne selon son titre
+	  * @param titre Le titre de la colonnne à récuperer
+	  * @return	Une colonne de type Colonne
+	  * @throws Exception Si le titre ne correspond à aucun des titres de colonnes stockés
+	  */
 	 public Colonne getColonne(String titre) throws Exception{
 			for (int i = 0; i < this.getColonnes().size(); i++){
 				if (this.getColonnes().get(i).getColonneTitre().toLowerCase().equals(titre.toLowerCase())){
@@ -66,6 +113,9 @@ public class DataFrame {
 		}
     }
     
+    /**
+     * Afficher le titre du Dataframe et les titres de toutes les colonnes
+     */
     public void afficherTitres()
 	{
 		System.out.println("DataFrame : "+this.getTitre());
@@ -79,6 +129,11 @@ public class DataFrame {
 		System.out.print( "-----------------------------------------------------------------------------\n" );
 	}
   
+    /**
+     * Afficher le titre du Dataframe, et les titres des colonnes sélectionnés entre l'indice de debut et l'indice de fin d'une liste de colonnes
+     * @param debut L'indice de debut d'une liste de colonnes
+     * @param fin L'indice de fin d'une liste de colonnes
+     */
     public void afficherTitres(int debut, int fin ){
 		System.out.println("DataFrame : "+this.getTitre());
 		System.out.print("Ligne\t\t");
@@ -91,6 +146,11 @@ public class DataFrame {
 		System.out.print( "----------------------------------------------------------------------\n" );
     }
     
+    /**
+     * Afficher le titre du Dataframe, et les titres des colonnes sélectionnés selon des titres passés en arguments
+     * @param arg Les titres des colonnes à afficher
+     * @throws Exception Si un ou plusieurs titres passés en arguments ne correspondent à aucun des titres de colonnes stockés
+     */
     public void afficherTitres( String... arg ) throws Exception{
 		System.out.println("DataFrame : "+this.getTitre());
 		System.out.print("Ligne\t\t");
@@ -106,6 +166,7 @@ public class DataFrame {
 		System.out.print( "\n" );
 		System.out.print( "----------------------------------------------------------------------\n" );
     }
+    
     
 	public void afficherDataframe(){
       afficherTitres();
