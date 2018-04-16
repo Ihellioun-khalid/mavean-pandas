@@ -1,7 +1,8 @@
 .DS_Store
 *.class
 target/
-target/classes
+target/classes/Run.class
+target/classes/*
 .classpath
 .project
 .settings/
