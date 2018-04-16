@@ -4,7 +4,7 @@ import java.util.LinkedHashSet;
 import com.sun.org.apache.bcel.internal.generic.Type;
 
 import Exceptions.ColonneNonComparableException;
-import Exceptions.ColonnePasCelluleException;
+import Exceptions.ColonnePasUnitException;
 import Exceptions.ColonnePasTitreException;
 import Exceptions.ColonnePasTypeException;
 import Exceptions.ColonneVideException;
@@ -101,7 +101,7 @@ public class Colonne {
 			System.out.println("type:"+getColonneType());
 			System.out.println("----------------------------------------------------------------------------------------");
 		}	
-		if(this.getUnits()==null) throw new ColonnePasCelluleException();
+		if(this.getUnits()==null) throw new ColonnePasUnitException();
 		else {
 			 System.out.println("les donnees de la Colonne "+getColonneTitre()+" sont:");
 			 int size=this.units.size();
