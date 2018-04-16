@@ -17,6 +17,11 @@ public class DataFrame {
 		this.setColonnes( new ArrayList<Colonne>() );
 	}
 	
+	public DataFrame(String csv) throws IOException{
+		CSVParser parsing = new csvParser(csv);
+		this.titre = parsing.getName();
+		this.colonnes = parsing.getAllColumn();
+	
 	public String getTitre() {
 		return titre;
 	}	
