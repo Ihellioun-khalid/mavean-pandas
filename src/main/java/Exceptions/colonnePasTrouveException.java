@@ -1,7 +1,7 @@
 package Exceptions;
 
-public class colonnePasTrouveException extends Exception {
-	public colonnePasTrouveException(String titre) {
-		System.out.println("Exception : la colonne n'a pas trouver.");
+public class ColonnePasTrouveException extends Exception {
+	public ColonnePasTrouveException(String titre) {
+		System.err.println("La colonne \""+titre+"\" n'existe pas.");
 	}
 }

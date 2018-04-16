@@ -6,10 +6,11 @@ import com.sun.org.apache.bcel.internal.generic.Type;
 //import exceptions.ColonneNonCalculableException;
 //import exceptions.ColonneNonTrouveeException;
 
+import Exceptions.ColonnePasTrouveException;
 import Exceptions.IndiceGrandException;
 import Exceptions.IndiceIncorrectException;
 import Exceptions.NonCalculableException;
-import Exceptions.colonnePasTrouveException;
+
 
 /**
  * Dataframe est un outil de gestion de données comme le Dataframe en Python
@@ -110,7 +111,7 @@ public class DataFrame {
 					return this.getColonnes().get(i);
 				}
 			}
-			throw new colonnePasTrouveException(titre);
+			throw new ColonnePasTrouveException(titre);
 		}
 			
 		
@@ -346,7 +347,7 @@ public class DataFrame {
 		
 		Type type = colonne.getColonneType();
 		if (type != Type.FLOAT && type != Type.INT){
-			throw new NonCalculableException(colonneLabel, type);
+			throw new NonCalculableException();
 		}
 
 		Float somme = 0f;
@@ -373,7 +374,7 @@ public class DataFrame {
 		
 		Type type = colonne.getColonneType();
 		if (type != Type.FLOAT && type != Type.INT){
-			throw new NonCalculableException(colonneLabel, type);
+			throw new NonCalculableException();
 		}
 
 		Float min = Float.MAX_VALUE;
@@ -398,7 +399,7 @@ public class DataFrame {
 		
 		Type type = colonne.getColonneType();
 		if (type != Type.FLOAT && type != Type.INT){
-			throw new NonCalculableException(colonneLabel, type);
+			throw new NonCalculableException();
 		}
 
 		Float max = 0f;

@@ -2,6 +2,6 @@ package Exceptions;
 
 public class IncoherenceTypeException extends Exception {
 	public IncoherenceTypeException() {
-		System.out.println("Exception: il y incoherence dans les types");
+		System.err.println("Exception: il y incoherence dans les types");
 	}
 }
