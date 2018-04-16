@@ -1,3 +1,4 @@
+package main;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 
@@ -60,7 +61,8 @@ public class Colonne {
 		return units;
 	}
 
-	public void setunits(ArrayList<Unit> units) {
+
+	public void setUnits(ArrayList<Unit> units) {
 		this.units = units;
 	}
 	
@@ -87,6 +89,9 @@ public class Colonne {
 		return true;
 	}
 	
+	
+	
+
 	public void afficheColonne() throws Exception{
 		
 		if(getColonneTitre()==null || getColonneTitre()=="" ) throw new ColonnePasTitreException();
