@@ -5,11 +5,11 @@
 - ABDULLAH HASIM Mohd Thaqif
 
 ## ⚙️ outils!
-  - eclipse IDE
-  - GitHub pour la gestion  de repo et
+  - Eclipse IDE
+  - GitHub pour la gestion  de repo 
   - Maven pour automatiser la gestion de projet et gerer les dependances 
   - JUnit pour le développement et l'exécution de tests unitaires automatisables
-  - Travis-ci pour déployement automatisée.
+  - Travis-ci pour le déployement automatisée.
   
 
 ## 🤖 Fonctionnalités implémentées
