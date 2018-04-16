@@ -28,13 +28,19 @@ public class Run {
 				Colonne cc =new Colonne("Pays", Type.getType("SHORT"), cellules_c);
 				Colonne dd =new Colonne("Passager", Type.getType("FLOAT"), cellules_b);
 				Colonne ee =new Colonne("Lovers", Type.getType("SHORT"), cellules_a);
-				ee=ee.addCellule(c,1);
-				ee.afficheColonne();
+//				ee=ee.addCellule(c,1);
+//				ee.afficheColonne();
 //				ee.addDebutCellule(c);
 //				dd.addDebutCellule(a);
 //				cc.afficheColonne();
 //				dd.afficheColonne();
 		//		aa.afficheColonne();
+				//ee.afficheColonne();
+				ee.addCellule(c, 2);
+				ee.supprimeCellule(cellules_a);
+//				ee.supprimeCellule(55);
+//				ee=ee.supprimeDuplicateCellule();
+				//ee.afficheColonne();
 				
 //				System.out.println(cc.compareColonne(dd));
 //				System.out.println(aa.compareColonne(aa));	

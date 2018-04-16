@@ -1,14 +1,15 @@
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 
 import com.sun.org.apache.bcel.internal.generic.Type;
 
-import Exceptions.CelluleNonComparableException;
 import Exceptions.ColonneNonComparableException;
 import Exceptions.ColonnePasCelluleException;
 import Exceptions.ColonnePasTitreException;
 import Exceptions.ColonnePasTypeException;
 import Exceptions.ColonneVideException;
 import Exceptions.IncoherenceTypeException;
+import Exceptions.Indexofbound;
 
 public class Colonne {
 	
@@ -176,34 +177,64 @@ public class Colonne {
 		}
 	}
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	public Colonne supprimeCellule(String Titre)throws Exception{
+	public Colonne supprimeCellule(Cellule a)throws Exception{
 		if(this.cellules==null) throw new ColonneVideException();
 		else {
-			this.cellules=cellules;
-			for (Cellule c : this.cellules) {
-				
-				//cellules.delete(c);
-				
+//			if((obj.getClass().getSimpleName()==this.getColonneType().toString()) || 
+//					(this.getColonneType().toString()=="short" && obj.getClass().getSimpleName().trim().toString().equals("String"))){
+//					for(int i=this.cellules.size()-1; i>=0; i--){
+//						Cellule o= cellules.get(i);
+//						System.out.println("ok");
+//						Type t = (Type)obj;
+//						System.out.println(t.getType());
+//						if(o.getData().equals(t))
+//							System.out.println("ok");
+//					    }
+//					for (Cellule c : cellules) {
+//						//System.out.println(c.getData());
+//					}
+////					Colonne resultat = new Colonne();
+////					resultat.colonneTitre=this.colonneTitre;
+////					resultat.colonneType=this.colonneType;
+////					resultat.cellules=cellules;
+					return null;
 			}
-			return null;
+//			else {
+//				throw new IncoherenceTypeException();
+//			}
 		}	
+//	}
+	
+	public Colonne supprimeDuplicateCellule()throws Exception{
+		LinkedHashSet<Cellule> lhs = new LinkedHashSet<Cellule>();
+		lhs.addAll(this.cellules);
+		this.cellules.clear();
+		this.cellules.addAll(lhs);
 		
+		Colonne resultat = new Colonne();
+		resultat.colonneTitre=this.colonneTitre;
+		resultat.colonneType=this.colonneType;
+		resultat.cellules=cellules;
+		return resultat;
 	}
 //	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//	public Colonne supprimeCellule(int i){
-//		if(this.cellules==null) throw new ColonneVideException();
-//		return null;
-//	}
-//	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//	public Colonne supprimeCellule(Cellule a){
-//	if(this.cellules==null) throw new ColonneVideException();
-//		return null;
-//	}
-//	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//	public Colonne supprimeCellule(ArrayList<Cellule> cellules){
-//		if(this.cellules==null) throw new ColonneVideException();
-//		return null;
-//	}
+	public Colonne supprimeCellule(int i)throws Exception{
+		if(this.cellules==null) throw new ColonneVideException();
+		if(i>=this.cellules.size()) new Indexofbound();
+		else {
+			this.cellules.remove(i);
+		}
+		Colonne resultat = new Colonne();
+		resultat.colonneTitre=this.colonneTitre;
+		resultat.colonneType=this.colonneType;
+		resultat.cellules=cellules;
+		return resultat;
+	}
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	public Colonne supprimeCellule(ArrayList<Cellule> cellules)throws Exception{
+		if(this.cellules==null) throw new ColonneVideException();
+		return null;
+	}
 //	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //	public Colonne modifieCellule(){
 //		return null;
