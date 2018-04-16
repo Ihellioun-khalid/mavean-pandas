@@ -1,3 +1,4 @@
+package main;
 
 import com.sun.org.apache.bcel.internal.generic.Type;
 import java.io.BufferedReader;
@@ -13,7 +14,7 @@ import java.util.Arrays;
  * @author ahmed
  */
 
-public class csvParser {
+public class CSVParser {
 	
 	private String file = "";
     private ArrayList<String> header;
@@ -22,7 +23,7 @@ public class csvParser {
     private int lineNumber = 0;
     private String fileName;
 
-    public csvParser(String file) throws FileNotFoundException, IOException {
+    public CSVParser(String file) throws FileNotFoundException, IOException {
         this.file = file;
         System.out.println(file);
         BufferedReader br = new BufferedReader(new FileReader(this.file));
@@ -79,7 +80,7 @@ public class csvParser {
         for (int i = 0; i <= colonnes.size() - 1; i++) {
 
             Type typeColumn = colonnes.get(i).getColonneType();
-            ArrayList<Cellule> cellsList = new ArrayList<Cellule>();
+            ArrayList<Unit> unitList = new ArrayList<Unit>();
 
             for (int j = 0; j < this.lineNumber; j++) {
                 boolean nullValue = false;
@@ -91,30 +92,30 @@ public class csvParser {
                 if (typeColumn == Type.INT) {
 
                     if (nullValue) {
-                        cellsList.add(new Cellule<Integer>(null));
+                        unitList.add(new Unit<Integer>());
                     } else {
-                        cellsList.add(new Cellule<Integer>(Integer.parseInt(this.content.get(j).get(i))));
+                        unitList.add(new Unit<Integer>(Integer.parseInt(this.content.get(j).get(i))));
                     }
 
                 } else if (typeColumn == Type.DOUBLE) {
 
                     if (nullValue) {
-                        cellsList.add(new Cellule<Integer>(null));
+                        unitList.add(new Unit<Integer>());
                     } else {
-                        cellsList.add(new Cellule<Double>(Double.parseDouble(this.content.get(j).get(i))));
+                        unitList.add(new Unit<Double>(Double.parseDouble(this.content.get(j).get(i))));
                     }
 
                 } else if (typeColumn == Type.STRING) {
 
                     if (nullValue) {
-                        cellsList.add(new Cellule<Integer>(null));
+                        unitList.add(new Unit<Integer>());
                     } else {
-                        cellsList.add(new Cellule<String>(this.content.get(j).get(i)));
+                        unitList.add(new Unit<String>(this.content.get(j).get(i)));
                     }
                 }
 
             }
-            colonnes.get(i).setCellules(cellsList);
+            colonnes.get(i).setUnits(unitList);
         }
 
         return colonnes;

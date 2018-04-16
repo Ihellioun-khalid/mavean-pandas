@@ -1,3 +1,5 @@
+package main;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import com.sun.org.apache.bcel.internal.generic.Type;
@@ -18,10 +20,10 @@ public class DataFrame {
 	}
 	
 	public DataFrame(String csv) throws IOException{
-		CSVParser parsing = new csvParser(csv);
+		CSVParser parsing = new CSVParser(csv);
 		this.titre = parsing.getName();
 		this.colonnes = parsing.getAllColumn();
-	
+	}
 	public String getTitre() {
 		return titre;
 	}	
