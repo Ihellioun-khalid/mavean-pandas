@@ -10,10 +10,10 @@ import java.util.Arrays;
 
 
 /**
- * CSVParser for dataframe
- * @author ahmed
+ * CSVParser pour le dataframe
+  * @author IHELLIOUN Khalid, SARRAJ Ahhmed, ABDULLAH HASIM Mohd Thaqif
+ * @version 1.0
  */
-
 public class CSVParser {
 	
 	private String file = "";
@@ -23,6 +23,12 @@ public class CSVParser {
     private int lineNumber = 0;
     private String fileName;
 
+    /**
+     * Parser les données depuis le fichier CSV
+     * @param file Le nom du fichier CSV à être parsé
+     * @throws FileNotFoundException 
+     * @throws IOException 
+     */
     public CSVParser(String file) throws FileNotFoundException, IOException {
         this.file = file;
         System.out.println(file);
@@ -30,6 +36,10 @@ public class CSVParser {
         this.convertCsvToArrayList(br);
     }
 
+    /**
+     * Récupérer le nom de fichier csv
+     * @return Le nom de fichier csv
+     */
     public String getName() {
         String[] fullPath = fileName.split("/");
         String fileWithExtension = fullPath[fullPath.length - 1];
@@ -37,10 +47,19 @@ public class CSVParser {
         return fileWithExtension;
     }
 
+    /**
+     * Récupérer toutes les colonnes
+     * @return Une liste de colonnes
+     */
     public ArrayList<Colonne> getAllColumn() {
         return this.convertArrayListToDataFrame();
     }
 
+    /**
+     * Convertir le fichier csv en une liste
+     * @param br BufferedReader
+     * @throws IOException
+     */
     private void convertCsvToArrayList(BufferedReader br) throws IOException {
         String line = "";
 
@@ -121,7 +140,7 @@ public class CSVParser {
         return colonnes;
 
     }
-
+    
     private Type Type(String get) {
         Type ret = null;
         int it = 0;
