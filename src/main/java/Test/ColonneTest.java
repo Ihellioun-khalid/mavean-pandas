@@ -2,6 +2,9 @@ package Test;
 
 import static org.junit.Assert.*;
 import com.sun.org.apache.bcel.internal.generic.Type;
+
+import junit.framework.TestCase;
+
 import java.util.ArrayList;
 
 import org.junit.After;
@@ -11,7 +14,7 @@ import org.junit.Test;
 import main.Colonne;
 import main.Unit;
 
-public class ColonneTest {
+public class ColonneTest extends TestCase {
 	
 	private Colonne colonne = new Colonne();
 
