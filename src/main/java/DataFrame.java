@@ -167,7 +167,9 @@ public class DataFrame {
 		System.out.print( "----------------------------------------------------------------------\n" );
     }
     
-    
+    /**
+     * Afficher tout le dataframe
+     */
 	public void afficherDataframe(){
       afficherTitres();
       // Affichage des données
@@ -182,7 +184,8 @@ public class DataFrame {
           System.out.println();
       }}
 		
-    	public int getSize()
+	
+    public int getSize()
 	{
 		int size = -1;
 		
@@ -193,12 +196,21 @@ public class DataFrame {
 		}
 		
 		return size;
-}
-       public int getSizeColonnes()
-		{	
+	}	
+       
+    public int getSizeColonnes()
+	{	
 		return this.getColonnes().size();
 	}
   
+    /**
+     * Sélectionner un sous-ensemble de lignes à partir de leur index  
+     * @param debut Index de debut
+     * @param fin Index de fin
+     * @return Un dataframe contenant le sous-ensemble de lignes à partir de leur index
+     * @throws IndiceIncorrectException Index Les indices indiquées doivent être entre 0 et la taille maximal du Dataframe
+     * @throws IndiceGrandException L'indice de debut doit être inférieur à l'indice de fin
+     */
 	public DataFrame selectLignes( int debut, int fin ) throws IndiceIncorrectException, IndiceGrandException
 	{
 		DataFrame df = new DataFrame();
@@ -224,6 +236,14 @@ public class DataFrame {
 		
 	}
   
+	/**
+	 * Sélectionner un sous-ensemble de colonnes à partir des indices données en paramètre
+	 * @param debut Indice de debut
+	 * @param fin Indice de fin
+	 * @return Un dataframe contenant un sous-ensemble de colonnes
+	 * @throws IndiceIncorrectException Les indices doivent être entre 0 et la taille maximale de nombre de colonnes
+	 * @throws IndiceGrandException L'indice de debut doit être inférieur à l'indice de fin
+	 */
 	public DataFrame selectColonnes( int debut, int fin ) throws IndiceIncorrectException, IndiceGrandException{
 		DataFrame df = new DataFrame();
 		if( debut < 0 || fin > this.getSize() )
@@ -242,6 +262,13 @@ public class DataFrame {
 		return df;
 	}
   
+	/**
+	 * Afficher les lignes à partir de leur index
+	 * @param debut L'indice de debut
+	 * @param fin L'indice de fin
+	 * @throws IndiceIncorrectException	Les indices doivent être entre 0 et la taille maximale de nombre de lignes
+	 * @throws IndiceGrandException L'indice de debut doit être inférieur à l'indice de fin
+	 */
 	public void afficherLignes( int debut, int fin ) throws IndiceIncorrectException, IndiceGrandException
 	{
 		// On vérifie que les indices existent dans le DataFrame
@@ -265,6 +292,13 @@ public class DataFrame {
 		}
 	}
 	
+	/**
+	 * Afficher un sous ensemble de colonnes à partir de leur indices
+	 * @param debut L'indice de debut
+	 * @param fin L'indice de fin
+	 * @throws IndiceIncorrectException	Les indices doivent être entre 0 et la taille maximale de nombre de colonnes
+	 * @throws IndiceGrandException L'indice de debut doit être inférieur à l'indice de fin
+	 */
 	public void afficherColonnes( int debut, int fin ) throws IndiceIncorrectException, IndiceGrandException
 	{
 		if( debut < 0 || fin > this.getSizeColonnes() )
@@ -286,6 +320,13 @@ public class DataFrame {
 			}
 		}
 	}
+	
+	/**
+	 * Calculer la moyenne des valeurs d'une colonne sélecionnée à partir de son titre
+	 * @param colonneLabel Le titre de colonne
+	 * @return Le moyenne des valeurs
+	 * @throws Exception Les données qui ne sont pas de type FLOAT ou INT ne peuvent pas être calculées
+	 */
 	public float calculateAverge(String colonneLabel) throws Exception {
 		Colonne colonne = this.getColonne(colonneLabel);
 		
@@ -307,6 +348,12 @@ public class DataFrame {
 	}
 	
   
+	/**
+	 * Calculer la valeur minimum d'une colonne sélectionnée à partir de son titre
+	 * @param colonneLabel Le titre de colonne
+	 * @return La valeur minimum trouvée
+	 * @throws Exception Les données qui ne sont pas de type FLOAT ou INT ne peuvent pas être calculées
+	 */
 	public float calculateMinimum(String colonneLabel) throws Exception {
 		Colonne colonne = this.getColonne(colonneLabel);
 		
@@ -326,6 +373,12 @@ public class DataFrame {
 	}
 	
   
+	/**
+	 * Calculer la valeur maximum d'une colonne sélectionnée à partir de son titre
+	 * @param colonneLabel Le titre de colonne
+	 * @return La valeur maximum trouvée
+	 * @throws Exception Les données qui ne sont pas de type FLOAT ou INT ne peuvent pas être calculées
+	 */
 	public float calculateMaximum(String colonneLabel) throws Exception {
 		Colonne colonne = this.getColonne(colonneLabel);
 		

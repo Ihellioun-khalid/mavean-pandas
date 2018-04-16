@@ -12,56 +12,113 @@ import Exceptions.ColonneVideException;
 import Exceptions.IncoherenceTypeException;
 import Exceptions.Indexofbound;
 
+/**
+ * Un objet Colonne pour stocker des données de même type
+ * @author IHELLIOUN Khalid, SARRAJ Ahhmed, ABDULLAH HASIM Mohd Thaqif
+ * @version 1.0
+ *
+ */
 public class Colonne {
 	
+	/**
+	 * Le titre/label d'une colonne
+	 */
 	private String colonneTitre;
+	/**
+	 * Le type de données stockées
+	 */
 	private Type colonneType;
+	/**
+	 * Une liste des Units
+	 */
 	private ArrayList <Unit> units;
 	
+	/**
+	 * Le constructeur qui initialise une colonne avec un titre vide, le type de données null, et, une liste de units null
+	 */
 	public Colonne() {
 		this.colonneTitre = "";
 		this.colonneType = null;
 		this.units = null;
 	}
 	
+	
+	/**
+	 * Le constructer qui crée une colonne avec un titre et son type de données stockées 
+	 * @param colonneTitre Le titre/label de la colonne
+	 * @param colonneType Le type de données stockées
+	 */
 	public Colonne(String colonneTitre, Type colonneType){
 		this.colonneTitre = colonneTitre;
 		this.colonneType = colonneType;
 	}
 	
+	/**
+	 * Le constructeur qui crée une colonne avec un titre, le type de données stockées et une liste de données à stocker
+	 * @param colonneTitre Le titre de la colonne
+	 * @param colonneType Le type de données 
+	 * @param units La liste de données à stocker
+	 */
 	public Colonne(String colonneTitre, Type colonneType, ArrayList <Unit> units){
 		this.colonneTitre = colonneTitre;
 		this.colonneType = colonneType;
 		this.units = units;
 	}
 	
+	/**
+	 * Le constructeur qui copier une colonne déjà crééé
+	 * @param a La colonne à être copiée
+	 */
 	public Colonne(Colonne a){
 		this.colonneTitre = a.colonneTitre;
 		this.colonneType = a.colonneType;
 		this.units = a.units;
 	}
 	
+	/**
+	 * Récuperer le titre de colonne
+	 * @return Le titre de colonne
+	 */
 	public String getColonneTitre() {
 		return colonneTitre;
 	}
 
+	/**
+	 * Donner un titre pour une colonne
+	 * @param colonneTitre Le titre de colonne
+	 */
 	public void setColonneTitre(String colonneTitre) {
 		this.colonneTitre = colonneTitre;
 	}
-
+	
+	/**
+	 * Récupérer le type de données d'une colonne 
+	 * @return Le type de données stockées
+	 */
 	public Type getColonneType() {
 		return colonneType;
 	}
 
+	/**
+	 * Donner le type de données stockées dans la colonne
+	 * @param colonneType Le type de données
+	 */
 	public void setColonneType(Type colonneType) {
 		this.colonneType = colonneType;
 	}
 
+	/**
+	 * Récupérer la liste de données stockées dans la colonne
+	 * @return La liste de données stockées
+	 */
 	public ArrayList<Unit> getUnits() {
 		return units;
 	}
 
-
+	/**
+	 * Ajouter une liste de données à être stockée dans la colonne
+	 * @param units Une liste de données à être stockée
+	 */
 	public void setUnits(ArrayList<Unit> units) {
 		this.units = units;
 	}
@@ -91,7 +148,10 @@ public class Colonne {
 	
 	
 	
-
+	/**
+	 * Afficher la colonne
+	 * @throws Exception La colonne doit avoir un titre, le type de colonne != null,  et elle ne doit pas être vide
+	 */
 	public void afficheColonne() throws Exception{
 		
 		if(getColonneTitre()==null || getColonneTitre()=="" ) throw new ColonnePasTitreException();
@@ -124,6 +184,10 @@ public class Colonne {
 		}
 	}
 	
+	/**
+	 * Récupérer la taille de colonne
+	 * @return La taille de colonne
+	 */
 	public int getSizeColonne(){	
 		if(this.getUnits()==null) {
 			return -1;
@@ -131,6 +195,12 @@ public class Colonne {
 		return this.getUnits().size();
 	}
 
+	/**
+	 * Ajouter une donnée dans la colonne. La donnée sera stockée à la première ligne
+	 * @param a La donnée
+	 * @return Une colonne
+	 * @throws Exception La donnée à être ajoutée doit être de même type que celui de la colonne
+	 */
 	public Colonne addDebutUnit(Unit a) throws Exception{ 
 		if((a.getData().getClass().getSimpleName()==this.getColonneType().toString()) || (this.getColonneType().toString()=="short" && a.getData().getClass().getSimpleName().trim().toString().equals("String"))) {
 				Colonne resultat = new Colonne();
@@ -148,6 +218,12 @@ public class Colonne {
 			}
 	}
 
+	/**
+	 * Ajouter un donnée dans la colonne. Elle sara stockée à la dernière ligne
+	 * @param a La donnée à être ajoutée
+	 * @return Une colonne
+	 * @throws Exception La donnée à être ajoutée doit être de même type que celui de la colonne
+	 */
 	public Colonne addFinUnit(Unit a)throws Exception{
 		if((a.getData().getClass().getSimpleName()==this.getColonneType().toString()) || (this.getColonneType().toString()=="short" && a.getData().getClass().getSimpleName().trim().toString().equals("String"))) {
 			Colonne resultat = new Colonne();
@@ -165,6 +241,13 @@ public class Colonne {
 		}
 	}
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/**
+	 * Ajouter une donnée dans la colonne. Elle sera stockée dans la ligne passée en paramètre
+	 * @param a La donnée
+	 * @param i L'indice/index 
+	 * @return Une colonne
+	 * @throws Exception L'indice donée doit être entre 0 ou la taille maximale de la colonne
+	 */
 	public Colonne addUnit(Unit a,int i)throws Exception{
 		if((a.getData().getClass().getSimpleName()==this.getColonneType().toString()) || 
 			(this.getColonneType().toString()=="short" && a.getData().getClass().getSimpleName().trim().toString().equals("String"))){
@@ -183,6 +266,11 @@ public class Colonne {
 	}
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+	/**
+	 * Supprimer les données en double dans une colonne
+	 * @return Une colonne
+	 * @throws Exception 
+	 */
 	public Colonne supprimeDuplicateUnit()throws Exception{
 		LinkedHashSet<Unit> lhs = new LinkedHashSet<Unit>();
 		lhs.addAll(this.units);
@@ -196,6 +284,12 @@ public class Colonne {
 		return resultat;
 	}
 //	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/**
+	 * Supprimer une donnée dans la colonne
+	 * @param i La ligne de la donnée à être supprimée
+	 * @return Une colonne
+	 * @throws Exception La donnée doit être existe dans la ligne demandée
+	 */
 	public Colonne supprimeUnit(int i)throws Exception{
 		if(this.units==null) throw new ColonneVideException();
 		if(i>=this.units.size()) new Indexofbound();
