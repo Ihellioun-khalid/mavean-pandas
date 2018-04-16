@@ -139,10 +139,12 @@ public class Colonne {
 			return false;
 		}
 		
-		if (!this.getUnits().equals(unit2.getUnits())){
-			return false;
+		for(int i=0;i<this.getSizeColonne();i++) {
+			if(this.getUnits().get(i).getData()!=unit2.getUnits().get(i).getData()){
+				return false;
+			}
 		}
-		
+
 		return true;
 	}
 	
